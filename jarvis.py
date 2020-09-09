@@ -195,6 +195,26 @@ if __name__ == "__main__":
 
             except Exception as e:
                 speak("Sorry Sir. I am not able to square root the numbers you gave me right now.")
+                
+        if "lcm" in query:
+            try:
+                speak("What is your first number?")
+                a = int(takeCommand())
+                speak("What is your second number?")
+                b = int(takeCommand())
+
+                maxNum = max(a, b)
+
+                while (True):
+                    if (maxNum % a == 0 and maxNum % b == 0):
+                        break
+                    maxNum = maxNum + 1
+
+                speak(f"Sir, Your first number was {a}, and your second number was {b}")
+                speak(f"The LCM of these two numbers is {maxNum}")
+
+            except Exception as e:
+                speak("Sorry Sir. I am not able to find the lcm of the numbers you gave me right now.")
 
         if "pythag theorem" in query:
             try:
