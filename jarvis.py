@@ -57,11 +57,6 @@ def sendEmail(to, content):
     server.sendmail("lalithbandaru36@gmail.com", to, content)
     server.close()
 
-
-def add(num1, num2):
-    num1 + num2
-
-
 if __name__ == "__main__":
     wishMe()
     while True:
