@@ -95,6 +95,11 @@ if __name__ == "__main__":
             music_dir = "C:\\Users\\splba\\Music\\Sample"
             songs = os.listdir(music_dir)
             os.startfile(os.path.join(music_dir, songs[0]))
+            
+        if "play thunderstorm with rain sound" in query:
+            audio_dir = "C:\\Users\\splba\\Jarvis\\audio_dir\\Audio.mp3"
+            audio_file = os.path.join(audio_dir)
+            os.startfile(os.path.join(audio_dir, audio_file))
 
         if "the time" in query:
             strTime = time.strftime("%I:%M %p")
