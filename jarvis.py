@@ -196,6 +196,20 @@ if __name__ == "__main__":
             except Exception as e:
                 speak("Sorry Sir. I am not able to square root the numbers you gave me right now.")
                 
+        if "percent" in query:
+            try:
+                percent_number = int(takeCommand())
+                first_number = int(takeCommand())
+
+                results = int((percent_number / 100) * first_number)
+
+                speak(f"Sir, Your percent number was {percent_number}")
+                speak(f"And your number was {first_number}")
+                speak(f"Your Answer is {results}")
+
+            except Exception as e:
+                speak("Sorry Sir. I am not able to find the percent of any given number.")
+                
         if "lcm" in query:
             try:
                 speak("What is your first number?")
