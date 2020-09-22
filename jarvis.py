@@ -257,6 +257,52 @@ if __name__ == "__main__":
 
             except Exception as e:
                 speak("Sorry Sir. I am not able to find the other leg value with your given hypotenuse and leg value")
+                
+        if "rps game" in query:
+            moves = ["rock", "paper", "scissors"]
+
+            try:
+                playing = True
+                while playing:
+                    speak("What moves do you want to choose?")
+                    user = takeCommand().lower()
+                    jarvis = random.choice(moves)
+
+                    speak(f"Sir, Your move was {user}")
+                    speak(f"And my move was {jarvis}")
+
+                    if user == jarvis:
+                        speak("Sir, It's a tie!")
+
+                    if user == "rock" and jarvis == "scissors":
+                        speak("Sir, You Won!")
+                    elif user == "paper" and jarvis == "rock":
+                        speak("Sir, You Won!")
+                    elif user == "scissors" and jarvis == "paper":
+                        speak("Sir, You Won!")
+                    
+                    if user == "scissors" and jarvis == "rock":
+                        speak("Sir, You Lost!")
+                    elif user == "rock" and jarvis == "paper":
+                        speak("Sir, You Lost!")
+                    elif user == "paper" and jarvis == "scissors":
+                        speak("Sir, You Lost!")
+
+                    try:
+                        speak("Would you like to play again?")
+                        user = takeCommand().lower()
+
+                        if user == "yes":
+                            playing = True
+                        elif user == "exit" or "no":
+                            playing = False
+                            speak("Sir, You have exited the game successfully.")
+                    
+                    except Exception as e:
+                        speak("Sorry Sir. I am not able to make the game play again.")
+                
+            except Exception as e:
+                speak("Sorry Sir. I am not able to play rock paper scissors with you right now.")
         
         if "what can you do" in query:
             speak("I can play music")
