@@ -259,10 +259,12 @@ if __name__ == "__main__":
                 speak("Sorry Sir. I am not able to find the other leg value with your given hypotenuse and leg value")
                 
         if "rps game" in query:
+            speak("Welcome to Rock Paper Scissors!")
             moves = ["rock", "paper", "scissors"]
 
             try:
                 playing = True
+                points = 0
                 while playing:
                     speak("What moves do you want to choose?")
                     user = takeCommand().lower()
@@ -276,30 +278,44 @@ if __name__ == "__main__":
 
                     if user == "rock" and jarvis == "scissors":
                         speak("Sir, You Won!")
+                        points += 1
                     elif user == "paper" and jarvis == "rock":
                         speak("Sir, You Won!")
+                        points += 1
                     elif user == "scissors" and jarvis == "paper":
                         speak("Sir, You Won!")
-                    
+                        points += 1
                     if user == "scissors" and jarvis == "rock":
                         speak("Sir, You Lost!")
+                        points -= 1
                     elif user == "rock" and jarvis == "paper":
                         speak("Sir, You Lost!")
+                        points -= 1
                     elif user == "paper" and jarvis == "scissors":
                         speak("Sir, You Lost!")
+                        points -= 1
 
-                    try:
-                        speak("Would you like to play again?")
-                        user = takeCommand().lower()
+                    if points == 3:
+                        speak("Sir, You won the game!")
+                        playing = False
+                        speak("You have exited the game successfully")
+                        speak("Come back again if you feel like playing with me")
+                    else:
+                        try:
+                            speak("Would you like to play again?")
+                            user = takeCommand().lower()
 
-                        if user == "yes":
-                            playing = True
-                        elif user == "exit" or "no":
-                            playing = False
-                            speak("Sir, You have exited the game successfully.")
-                    
-                    except Exception as e:
-                        speak("Sorry Sir. I am not able to make the game play again.")
+                            if user == "yes":
+                                playing = True
+                                points = points
+                            elif user == "exit" or "no":
+                                playing = False
+                                speak("Sir, You have exited the game successfully.")
+                                speak(f"Sir, You got {points} points while playing.")
+                                points = 0
+                        
+                        except Exception as e:
+                            speak("Sorry Sir. I am not able to make the game play again.")
                 
             except Exception as e:
                 speak("Sorry Sir. I am not able to play rock paper scissors with you right now.")
